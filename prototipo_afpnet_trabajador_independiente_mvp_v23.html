@@ -8502,6 +8502,23 @@ html,body{max-width:100%;overflow-x:hidden}
     margin-right:auto!important;
   }
 }
+
+/* Registro trabajador independiente: progreso de 2 pasos */
+#registerview .register-progress-steps.independent-progress{
+  width:min(680px,100%)!important;
+  grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr)!important;
+}
+#registerview .register-progress-steps.independent-progress #h3,
+#registerview .register-progress-steps.independent-progress .pline:nth-of-type(2){
+  display:none!important;
+}
+@media(max-width:760px){
+  #registerview .register-progress-steps.independent-progress{
+    grid-template-columns:1fr 28px 1fr!important;
+    gap:6px!important;
+    margin-bottom:14px!important;
+  }
+}
 /* ===== Employer registration flow ===== */
 #registerview #progress[hidden],
 #registerview .employer-panel[hidden],
@@ -8542,6 +8559,74 @@ html,body{max-width:100%;overflow-x:hidden}
   #registerview .emp-copy-check{align-items:flex-start;font-size:15px}
 }
 
+
+/* Employer mobile progress: compacto como el flujo de empleador del hogar */
+@media(max-width:760px){
+  #registerview .employer-progress-steps{
+    display:grid!important;
+    grid-template-columns:30px minmax(12px,1fr) 30px minmax(12px,1fr) 30px minmax(12px,1fr) 30px minmax(12px,1fr) 30px!important;
+    align-items:center!important;
+    gap:6px!important;
+    width:100%!important;
+    max-width:390px!important;
+    margin:10px auto 16px!important;
+    padding:0 2px!important;
+  }
+  #registerview .employer-progress-steps .emp-step{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    justify-items:center!important;
+    align-items:center!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+  #registerview .employer-progress-steps .emp-step span{
+    width:30px!important;
+    height:30px!important;
+    min-width:30px!important;
+    font-size:13px!important;
+    box-shadow:none!important;
+  }
+  #registerview .employer-progress-steps .emp-step strong,
+  #registerview .employer-progress-steps .emp-step small{
+    position:absolute!important;
+    width:1px!important;
+    height:1px!important;
+    padding:0!important;
+    margin:-1px!important;
+    overflow:hidden!important;
+    clip:rect(0,0,0,0)!important;
+    white-space:nowrap!important;
+    border:0!important;
+  }
+  #registerview .employer-progress-steps .emp-line{
+    width:100%!important;
+    height:5px!important;
+    min-width:0!important;
+    flex-basis:auto!important;
+    margin:0!important;
+    border-radius:999px!important;
+    background:#d8e4ef!important;
+  }
+  #registerview .employer-progress-steps .emp-line.done{
+    background:#15945e!important;
+  }
+}
+@media(max-width:360px){
+  #registerview .employer-progress-steps{
+    grid-template-columns:28px minmax(8px,1fr) 28px minmax(8px,1fr) 28px minmax(8px,1fr) 28px minmax(8px,1fr) 28px!important;
+    gap:4px!important;
+  }
+  #registerview .employer-progress-steps .emp-step span{
+    width:28px!important;
+    height:28px!important;
+    min-width:28px!important;
+    font-size:12px!important;
+  }
+}
 /* ===== Employer DNI guided camera ===== */
 #registerview .emp-dni-uploads .emp-dni-card{cursor:default;padding:26px 18px}
 #registerview .emp-dni-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px 0 6px}
@@ -8661,6 +8746,231 @@ html,body{max-width:100%;overflow-x:hidden}
     height:44px;
     min-height:44px;
   }
+}
+/* Ajuste visual: captcha compacto para trabajador independiente */
+#registerview .independent-lookup-security{
+  width:min(760px,100%)!important;
+  margin:14px 0 4px!important;
+  padding:12px 14px!important;
+  grid-template-columns:minmax(190px,250px) minmax(260px,1fr)!important;
+  gap:10px 14px!important;
+  border-radius:12px!important;
+}
+#registerview .independent-lookup-security .verification-code__label{
+  font-size:13px!important;
+}
+#registerview .independent-lookup-security .verification-code__top{
+  grid-template-columns:minmax(150px,1fr) 40px!important;
+  gap:8px!important;
+}
+#registerview .independent-lookup-security .verification-code__display{
+  height:46px!important;
+  border-radius:10px!important;
+}
+#registerview .independent-lookup-security .verification-code__char{
+  font-size:23px!important;
+  margin:0 2px!important;
+}
+#registerview .independent-lookup-security .verification-code__refresh{
+  width:40px!important;
+  height:40px!important;
+  min-height:40px!important;
+  font-size:18px!important;
+}
+#registerview .independent-lookup-security .verification-code__input label{
+  font-size:12px!important;
+  margin-bottom:6px!important;
+}
+#registerview .independent-lookup-security .verification-code__input input{
+  height:46px!important;
+  border-radius:10px!important;
+  font-size:15px!important;
+  letter-spacing:.08em!important;
+}
+#registerview .independent-lookup-security .verification-code__error{
+  min-height:14px!important;
+  font-size:12px!important;
+}
+@media(max-width:760px){
+  #registerview .independent-lookup-security{
+    width:100%!important;
+    padding:12px!important;
+    gap:10px!important;
+    grid-template-columns:1fr!important;
+  }
+  #registerview .independent-lookup-security .verification-code__top{
+    grid-template-columns:1fr 40px!important;
+  }
+  #registerview .independent-lookup-security .verification-code__display,
+  #registerview .independent-lookup-security .verification-code__input input{
+    height:44px!important;
+  }
+  #registerview .independent-lookup-security .verification-code__refresh{
+    width:40px!important;
+    height:40px!important;
+    min-height:40px!important;
+  }
+}
+/* Ajuste visual v2: progreso independiente y captcha compacto */
+#registerview .register-progress-steps.independent-progress{
+  width:min(760px,100%)!important;
+  grid-template-columns:minmax(230px,max-content) minmax(72px,1fr) minmax(190px,max-content)!important;
+  gap:12px!important;
+  align-items:center!important;
+}
+#registerview .register-progress-steps.independent-progress #h2 + .pline{
+  display:none!important;
+}
+#registerview .register-progress-steps.independent-progress .stephead{
+  min-width:0!important;
+  align-items:center!important;
+}
+#registerview .register-progress-steps.independent-progress .stepcopy{
+  max-width:210px!important;
+  overflow:visible!important;
+}
+#registerview .register-progress-steps.independent-progress .stepcopy strong{
+  display:-webkit-box!important;
+  -webkit-line-clamp:2!important;
+  -webkit-box-orient:vertical!important;
+  overflow:hidden!important;
+  line-height:1.18!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  hyphens:none!important;
+}
+#registerview .register-progress-steps.independent-progress .stepcopy span{
+  display:block!important;
+  white-space:normal!important;
+  line-height:1.25!important;
+}
+#registerview .independent-lookup-security{
+  width:min(620px,100%)!important;
+  max-width:620px!important;
+  margin:12px 0 4px!important;
+  padding:10px 12px!important;
+  border-radius:10px!important;
+  background:#f6faff!important;
+  grid-template-columns:auto minmax(220px,1fr)!important;
+  gap:7px 12px!important;
+  align-items:center!important;
+}
+#registerview .independent-lookup-security .verification-code__label{
+  grid-column:1/-1!important;
+  font-size:12px!important;
+  line-height:1.2!important;
+  margin:0!important;
+}
+#registerview .independent-lookup-security .verification-code__top{
+  width:auto!important;
+  display:grid!important;
+  grid-template-columns:104px 34px!important;
+  gap:8px!important;
+  align-items:center!important;
+}
+#registerview .independent-lookup-security .verification-code__display{
+  width:104px!important;
+  min-width:104px!important;
+  height:34px!important;
+  border-radius:6px!important;
+  background:#fff!important;
+}
+#registerview .independent-lookup-security .verification-code__char{
+  font-size:18px!important;
+  margin:0 1px!important;
+  letter-spacing:0!important;
+}
+#registerview .independent-lookup-security .verification-code__refresh{
+  width:34px!important;
+  height:34px!important;
+  min-height:34px!important;
+  border-radius:50%!important;
+  font-size:17px!important;
+  box-shadow:none!important;
+}
+#registerview .independent-lookup-security .verification-code__refresh span:first-child{
+  display:inline!important;
+}
+#registerview .independent-lookup-security .verification-code__input{
+  margin:0!important;
+}
+#registerview .independent-lookup-security .verification-code__input label{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+#registerview .independent-lookup-security .verification-code__input input{
+  height:38px!important;
+  min-height:38px!important;
+  border-radius:999px!important;
+  font-size:14px!important;
+  letter-spacing:0!important;
+  padding:0 16px!important;
+  text-transform:none!important;
+}
+#registerview .independent-lookup-security .verification-code__error{
+  grid-column:1/-1!important;
+  min-height:13px!important;
+  margin:0!important;
+  font-size:12px!important;
+}
+@media(max-width:760px){
+  #registerview .register-progress-steps.independent-progress{
+    width:100%!important;
+    grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr)!important;
+    gap:8px!important;
+  }
+  #registerview .register-progress-steps.independent-progress .stepcopy{
+    max-width:150px!important;
+  }
+  #registerview .register-progress-steps.independent-progress .stepcopy strong{
+    font-size:12px!important;
+  }
+  #registerview .register-progress-steps.independent-progress .stepcopy span{
+    font-size:11px!important;
+  }
+  #registerview .independent-lookup-security{
+    width:100%!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    padding:10px!important;
+  }
+  #registerview .independent-lookup-security .verification-code__top{
+    grid-template-columns:112px 34px!important;
+  }
+  #registerview .independent-lookup-security .verification-code__display{
+    width:112px!important;
+    min-width:112px!important;
+  }
+}
+@media(max-width:420px){
+  #registerview .register-progress-steps.independent-progress .stepcopy{
+    max-width:118px!important;
+  }
+  #registerview .independent-lookup-security{
+    grid-template-columns:1fr!important;
+  }
+  #registerview .independent-lookup-security .verification-code__top{
+    grid-template-columns:1fr 34px!important;
+  }
+  #registerview .independent-lookup-security .verification-code__display{
+    width:100%!important;
+    min-width:0!important;
+  }
+}
+/* Corrección final: solo una línea entre los 2 pasos independientes */
+#registerview .register-progress-steps.independent-progress #h1 + .pline{
+  display:block!important;
+}
+#registerview .register-progress-steps.independent-progress #h2 + .pline,
+#registerview .register-progress-steps.independent-progress #h3{
+  display:none!important;
 }
 /* Disable legacy choiceflow screen */
 #homeview.choiceflow{display:none!important}
@@ -8873,7 +9183,7 @@ html,body{max-width:100%;overflow-x:hidden}
 <div class="field" id="rucfield"><label for="ruc">RUC <span class="req">*</span></label><input id="ruc" maxlength="11" inputmode="numeric" placeholder="Ej. 20100123456"><div class="hint">Debe contener 11 dígitos.</div></div>
 <div class="field"><label for="doctype">Tipo de documento <span class="req">*</span></label><select id="doctype"><option>DNI</option><option>Carné de extranjería</option><option>Pasaporte</option></select><div class="hint"></div></div>
 <div class="field doc-query-field"><label for="doc">N.º de documento <span class="req">*</span></label><div class="doc-query-row"><input id="doc" maxlength="8" inputmode="numeric" placeholder="Ingresa 8 dígitos" required><button class="doc-query-button" id="consultHolderData" type="button" aria-label="Consultar datos del titular" disabled><span aria-hidden="true" class="doc-query-icon">⌕</span><span class="doc-query-text">Consultar datos</span></button></div><div class="hint"></div></div>
-</div><div class="verification-code independent-lookup-security" id="independentLookupSecurity" data-verification="independent-lookup" hidden><div class="verification-code__label">Código de verificación</div><div class="verification-code__top"><div class="verification-code__display" id="independentLookupCaptcha" role="img" aria-label="Código de verificación generado para búsqueda"></div><button class="verification-code__refresh" id="refreshIndependentLookup" type="button" aria-label="Actualizar código" title="Actualizar código"><span aria-hidden="true">↻</span><span>Actualizar código</span></button></div><div class="field verification-code__input"><label for="independentLookupCaptchaInput">Ingresa el código mostrado <span class="req">*</span></label><input id="independentLookupCaptchaInput" maxlength="5" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Escribe el código" aria-describedby="independentLookupCaptchaErr"><div class="error verification-code__error" id="independentLookupCaptchaErr"></div></div><div class="verification-code__live" id="independentLookupCaptchaLive" aria-live="polite"></div></div><div class="grid3" style="margin-top:17px">
+</div><div class="verification-code independent-lookup-security" id="independentLookupSecurity" data-verification="independent-lookup" hidden><div class="verification-code__label">Código de verificación</div><div class="verification-code__top"><div class="verification-code__display" id="independentLookupCaptcha" role="img" aria-label="Código de verificación generado para búsqueda"></div><button class="verification-code__refresh" id="refreshIndependentLookup" type="button" aria-label="Actualizar código" title="Actualizar código"><span aria-hidden="true">↻</span><span>Actualizar código</span></button></div><div class="field verification-code__input"><label for="independentLookupCaptchaInput">Ingresa el código mostrado <span class="req">*</span></label><input id="independentLookupCaptchaInput" maxlength="5" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Texto de la imagen" aria-describedby="independentLookupCaptchaErr"><div class="error verification-code__error" id="independentLookupCaptchaErr"></div></div><div class="verification-code__live" id="independentLookupCaptchaLive" aria-live="polite"></div></div><div class="grid3" style="margin-top:17px">
 <div class="field"><label for="ap1">Apellido paterno</label><input id="ap1" required readonly><div class="hint"></div></div>
 <div class="field"><label for="ap2">Apellido materno</label><input id="ap2" readonly><div class="hint"></div></div>
 <div class="field"><label for="names">Nombres</label><input id="names" required readonly><div class="hint"></div></div>
@@ -8884,9 +9194,14 @@ html,body{max-width:100%;overflow-x:hidden}
 <div class="uploads"><label class="upload"><input type="file" id="front" accept="image/*,.pdf" capture="environment"><div><div class="uploadicon">▤</div><strong>Frente del DNI</strong><span>Arrastra o selecciona un archivo</span><span>JPG, PNG o PDF. Máx. 5 MB</span><span class="filename" id="frontname"></span></div></label><label class="upload"><input type="file" id="back" accept="image/*,.pdf" capture="environment"><div><div class="uploadicon">▥</div><strong>Reverso del DNI</strong><span>Arrastra o selecciona un archivo</span><span>JPG, PNG o PDF. Máx. 5 MB</span><span class="filename" id="backname"></span></div></label></div>
 <div class="notice">ⓘ <div>Asegúrate de que los datos sean visibles, sin reflejos, sombras ni bordes recortados.</div></div>
 </div></div>
-<div class="section contact-section locked" id="contactsection" aria-describedby="contactlockmessage"><h2 class="sectitle">Datos de contacto</h2><div class="contact-lock-message" id="contactlockmessage">ⓘ <span>Consulta los datos del titular para habilitar esta sección</span></div><div class="contact"><div class="field"><label for="phone">Celular <span class="req">*</span></label><div class="phone"><select id="phonecountry"><option>+51</option></select><input id="phone" maxlength="9" inputmode="numeric" placeholder="Ej. 987654321" required></div><div class="hint">Te enviaremos notificaciones sobre tu registro.</div></div><div class="field"><label for="email">Correo electrónico <span class="req">*</span></label><input id="email" type="email" placeholder="Ej. nombre@correo.com.pe" required autocomplete="email"><div class="hint">Enviaremos tus credenciales a este correo.</div></div><div class="field"><label for="confirmemail">Confirmar correo electrónico <span class="req">*</span></label><input id="confirmemail" type="email" placeholder="Vuelve a ingresar tu correo" required autocomplete="email"><div class="email-match" id="confirmemailhelp">Ambos correos deben coincidir.</div></div></div><div class="notice">🔒 <div><strong>Tus datos están protegidos.</strong> Los utilizaremos para validar tu registro y comunicarnos sobre tu cuenta.</div></div></div>
+<div id="contactOriginalSlot" hidden></div><div class="section contact-section locked" id="contactsection" aria-describedby="contactlockmessage"><h2 class="sectitle">Datos de contacto</h2><div class="contact-lock-message" id="contactlockmessage">ⓘ <span>Consulta los datos del titular para habilitar esta sección</span></div><div class="contact"><div class="field"><label for="phone">Celular <span class="req">*</span></label><div class="phone"><select id="phonecountry"><option>+51</option></select><input id="phone" maxlength="9" inputmode="numeric" placeholder="Ej. 987654321" required></div><div class="hint">Te enviaremos notificaciones sobre tu registro.</div></div><div class="field"><label for="email">Correo electrónico <span class="req">*</span></label><input id="email" type="email" placeholder="Ej. nombre@correo.com.pe" required autocomplete="email"><div class="hint">Enviaremos tus credenciales a este correo.</div></div><div class="field"><label for="confirmemail">Confirmar correo electrónico <span class="req">*</span></label><input id="confirmemail" type="email" placeholder="Vuelve a ingresar tu correo" required autocomplete="email"><div class="email-match" id="confirmemailhelp">Ambos correos deben coincidir.</div></div></div><div class="notice">🔒 <div><strong>Tus datos están protegidos.</strong> Los utilizaremos para validar tu registro y comunicarnos sobre tu cuenta.</div></div></div>
 <div class="section" id="independentPrivacySection" hidden><h2 class="sectitle">✓ Confirmación y seguridad</h2><div class="terms"><label class="checkrow"><input type="checkbox" id="independentPrivacy"><span>He leído la <a href="#" onclick="return false">Política de privacidad y tratamiento de datos personales de AFPnet</a>.</span></label></div></div>
 <div class="actions"><button type="button" class="btn primary" id="next">Continuar &rarr;</button></div></section>
+<section class="panel" id="independentContactStep" hidden>
+<button type="button" class="register-step-back" id="independentBackIdentity" aria-label="Volver">&larr; Volver</button>
+<div id="independentContactMount"></div>
+<div class="actions"><button type="button" class="btn primary" id="independentFinish">Finalizar</button></div>
+</section>
 <section class="panel" id="step2" hidden>
 <button type="button" class="register-step-back" id="backbtn" aria-label="Volver">&larr; Volver</button>
 <div class="emailbanner" hidden><div><strong id="masked">—</strong></div><button type="button" class="linkbtn" id="edit">Editar</button></div>
@@ -9004,7 +9319,54 @@ html,body{max-width:100%;overflow-x:hidden}
     </div>
   </header>
   <main class="appcontent">
-    <section id="homepanel" class="apppanel"><h1>Inicio</h1></section>
+    <section id="homepanel" class="apppanel app-home-panel">
+  <div class="home-welcome-shell">
+    <section class="home-welcome-card" aria-label="Bienvenida AFPnet">
+      <div class="home-welcome-top">
+        <div class="home-welcome-copy">
+          <h1>Hola, Rafael</h1>
+          <small>BIENVENIDO A AFPNET</small>
+        </div>
+        <div class="home-welcome-avatar" aria-hidden="true">RB</div>
+      </div>
+    </section>
+
+    <section class="home-actions-section" aria-label="Acciones principales">
+      <div class="home-section-title">
+        <div>
+          <h2>¿Qué deseas hacer hoy?</h2>
+          <p>Elige una opción para declarar, pagar o consultar tus aportes.</p>
+        </div>
+      </div>
+      <div class="home-action-grid">
+        <button type="button" class="home-action-card primary" data-home-target="declare">
+          <span class="home-action-icon" aria-hidden="true">▣</span>
+          <span class="home-action-copy">
+            <span class="home-action-title">Declarar aportes</span>
+            <span class="home-action-desc">Registra un nuevo aporte y genera la planilla para pago.</span>
+          </span>
+          <span class="home-action-arrow" aria-hidden="true">›</span>
+        </button>
+        <button type="button" class="home-action-card" data-home-target="pending">
+          <span class="home-action-icon" aria-hidden="true">◴</span>
+          <span class="home-action-copy">
+            <span class="home-action-title">Pagos pendientes</span>
+            <span class="home-action-desc">Consulta las planillas presentadas que aún están pendientes de pago.</span>
+          </span>
+          <span class="home-action-arrow" aria-hidden="true">›</span>
+        </button>
+        <button type="button" class="home-action-card" data-home-target="history">
+          <span class="home-action-icon" aria-hidden="true">⌕</span>
+          <span class="home-action-copy">
+            <span class="home-action-title">Historial de Aportes</span>
+            <span class="home-action-desc">Revisa aportes anteriores, estados y constancias disponibles.</span>
+          </span>
+          <span class="home-action-arrow" aria-hidden="true">›</span>
+        </button>
+      </div>
+    </section>
+  </div>
+</section>
     <section id="declarepanel" class="apppanel" hidden><h1>Declarar aportes</h1></section>
     <section id="pendingpanel" class="apppanel" hidden><h1>Pagos pendientes</h1></section>
     <section id="paymentpanel" class="apppanel" hidden><h1>Pagar aporte</h1></section>
@@ -9554,10 +9916,14 @@ function updateRegistrationType(type){
   $('ruc').required = needsRuc;
 
   $('dniupload').hidden = type === 'natural' || type === 'afiliado';
-  if($('independentLookupSecurity'))$('independentLookupSecurity').hidden = type !== 'afiliado';
-  if($('independentPrivacySection'))$('independentPrivacySection').hidden = type !== 'afiliado';
-  if($('next'))$('next').innerHTML = type === 'afiliado' ? 'Confirmar' : 'Continuar &rarr;';
-  if(type === 'afiliado' && independentLookupVerification) independentLookupVerification.refresh({focus:false,announce:false});
+  const independent = type === 'afiliado';
+  configureIndependentProgress(independent);
+  moveIndependentContactStep(false);
+  if($('independentLookupSecurity'))$('independentLookupSecurity').hidden = !independent;
+  if($('contactsection'))$('contactsection').hidden = independent;
+  if($('independentPrivacySection'))$('independentPrivacySection').hidden = true;
+  if($('next'))$('next').innerHTML = independent ? 'Continuar &rarr;' : 'Continuar &rarr;';
+  if(independent && independentLookupVerification) independentLookupVerification.refresh({focus:false,announce:false});
 
   const doctypeSelect = $('doctype');
   const passportOption = Array.from(doctypeSelect.options).find(opt => opt.textContent.trim() === 'Pasaporte');
@@ -9644,6 +10010,38 @@ function valid1(){
 
   if(!$('dniupload').hidden&&(!$('front').files.length||!$('back').files.length)){
     alert('Carga el frente y reverso del DNI.');
+    ok=false;
+  }
+  return ok;
+}
+function validIndependentIdentity(){
+  let ok=true;
+  if(titularConsultaExitosa&&titularConsultaClave!==`${$('doctype').value}|${$('doc').value.trim().toUpperCase()}`){
+    clearHolderLookupState(true);
+    clearContactFields();
+  }
+  const holderOk=titularConsultaExitosa&&$('names').value.trim()&&$('ap1').value.trim();
+  if(!holderOk){
+    showIdentityQueryMessage('error','Consulta los datos del titular para continuar','Ingresa el código de verificación y consulta los datos antes de avanzar.');
+    ok=false;
+  }
+  ok=validateDocNumberField('doctype','doc',true)&&ok;
+  return ok&&holderOk;
+}
+function validIndependentContact(){
+  let ok=true;
+  const phoneOk=/^\d{9}$/.test($('phone').value.trim());
+  $('phone').classList.toggle('invalid',!phoneOk);
+  ok=phoneOk&&ok;
+  const em=email.checkValidity()&&email.value.trim();
+  const emailsMatch=em&&confirmEmail.checkValidity()&&confirmEmail.value.trim()===email.value.trim();
+  email.classList.toggle('invalid',!em);
+  confirmEmail.classList.toggle('invalid',!emailsMatch);
+  $('confirmemailhelp').textContent=emailsMatch?'Los correos coinciden.':'Los correos electrónicos no coinciden.';
+  $('confirmemailhelp').className=`email-match ${emailsMatch?'ok':'error'}`;
+  ok=ok&&em&&emailsMatch;
+  if(!$('independentPrivacy').checked){
+    alert('Debes revisar la política de privacidad de AFPnet.');
     ok=false;
   }
   return ok;
@@ -9842,12 +10240,40 @@ async function startBiometricValidation(){
     else {if(start){start.hidden=true;start.disabled=true;}showBiometricRetry(true);}
   }
 }
+function configureIndependentProgress(isIndependent){
+  if(!progress)return;
+  progress.classList.toggle('independent-progress',!!isIndependent);
+  const plines=progress.querySelectorAll('.pline');
+  if(h1){h1.querySelector('.stepcopy strong').textContent=isIndependent?'Validación de identidad':'Identificación y contacto';h1.querySelector('.stepcopy span').textContent=isIndependent?'Documento del titular':'Datos personales';}
+  if(h2){h2.querySelector('.stepcopy strong').textContent=isIndependent?'Datos de contacto':'Domicilio';h2.querySelector('.stepcopy span').textContent=isIndependent?'Celular y correo':'Confirmación básica';}
+  if(h3){h3.hidden=!!isIndependent;h3.querySelector('.stepcopy strong').textContent='Validación biométrica';h3.querySelector('.stepcopy span').textContent='Validación facial';}
+  if(plines[1])plines[1].hidden=!!isIndependent;
+}
+function moveIndependentContactStep(show){
+  const contact=$('contactsection'), privacy=$('independentPrivacySection'), mount=$('independentContactMount'), slot=$('contactOriginalSlot');
+  if(!contact||!privacy||!mount||!slot)return;
+  if(show){
+    mount.appendChild(contact);
+    mount.appendChild(privacy);
+    contact.hidden=false;
+    privacy.hidden=false;
+  }else{
+    slot.parentNode.insertBefore(contact,slot.nextSibling);
+    contact.parentNode.insertBefore(privacy,contact.nextSibling);
+    contact.hidden=(document.querySelector('.type input:checked')?.value==='afiliado');
+    privacy.hidden=true;
+  }
+}
 function updateRegisterProgressSummary(step){
   const kicker=$('registerStepKicker'), title=$('registerStepTitle');
   if(!kicker || !title) return;
   if(activeProfile==='afiliado'){
-    kicker.textContent='Paso 1 de 1';
-    title.textContent='Identificación y contacto';
+    const copy={
+      1:['Paso 1 de 2','Validación de identidad'],
+      2:['Paso 2 de 2','Datos de contacto']
+    }[step]||['Paso 1 de 2','Validación de identidad'];
+    kicker.textContent=copy[0];
+    title.textContent=copy[1];
     return;
   }
   const copy={
@@ -9871,11 +10297,25 @@ function setRegisterProgress(step){
 }
 function showRegisterPanel(step){
   const independent=activeProfile==='afiliado';
-  step1.hidden=step!==1;
-  step2.hidden=independent || step!==2;
-  if(step3)step3.hidden=independent || step!==3;
-  if(progress)progress.hidden=independent;
-  setRegisterProgress(independent?1:step);
+  configureIndependentProgress(independent);
+  if(independent){
+    const safeStep=step===2?2:1;
+    step1.hidden=safeStep!==1;
+    step2.hidden=true;
+    if(step3)step3.hidden=true;
+    if($('independentContactStep'))$('independentContactStep').hidden=safeStep!==2;
+    moveIndependentContactStep(safeStep===2);
+    if(progress)progress.hidden=false;
+    setRegisterProgress(safeStep);
+  }else{
+    moveIndependentContactStep(false);
+    if($('independentContactStep'))$('independentContactStep').hidden=true;
+    step1.hidden=step!==1;
+    step2.hidden=step!==2;
+    if(step3)step3.hidden=step!==3;
+    if(progress)progress.hidden=false;
+    setRegisterProgress(step);
+  }
   scrollTo({top:0,behavior:'smooth'});
 }
 function go2(){stopBiometricCamera();showRegisterPanel(2);$('masked').textContent=email.value}
@@ -9889,7 +10329,9 @@ function valid2(focusOnError=true){
   ok=ok&&c;
   return ok;
 }
-$('next').onclick=()=>{if(valid1()){if(activeProfile==='afiliado')completeIndependentRegistration();else go2();}};
+$('next').onclick=()=>{if(activeProfile==='afiliado'){if(validIndependentIdentity())showRegisterPanel(2);}else if(valid1())go2();};
+if($('independentBackIdentity'))$('independentBackIdentity').onclick=()=>showRegisterPanel(1);
+if($('independentFinish'))$('independentFinish').onclick=()=>{if(validIndependentContact())completeIndependentRegistration();};
 $('backbtn').onclick=go1;
 if($('edit')) $('edit').onclick=go1;
 if($('biometricNext'))$('biometricNext').onclick=()=>{if(valid2())go3()};
@@ -9899,6 +10341,14 @@ const registerVerification=createVerificationCode({displayId:'captchatext',input
 independentLookupVerification=createVerificationCode({displayId:'independentLookupCaptcha',inputId:'independentLookupCaptchaInput',refreshId:'refreshIndependentLookup',errorId:'independentLookupCaptchaErr',liveId:'independentLookupCaptchaLive'});
 $('form').onsubmit=e=>{
   e.preventDefault();
+  if(activeProfile==='afiliado'){
+    if($('independentContactStep')&&!$('independentContactStep').hidden){
+      if(validIndependentContact())completeIndependentRegistration();
+    }else if(validIndependentIdentity()){
+      showRegisterPanel(2);
+    }
+    return;
+  }
   if(!valid2(false)){go2();return;}
   if(!biometricCompleted){
     biometricSetState('pending','Validación pendiente','Completa la validación facial para finalizar el registro.');
