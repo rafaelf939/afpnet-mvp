@@ -8576,6 +8576,92 @@ html,body{max-width:100%;overflow-x:hidden}
   .emp-dni-camera-actions .btn{width:100%;min-width:0}
 }
 
+
+/* Captcha de búsqueda para trabajador independiente */
+#registerview .independent-lookup-security{
+  width:100%;
+  max-width:none;
+  margin:18px 0 4px;
+  padding:16px;
+  border:1px solid #d7e6f6;
+  border-radius:14px;
+  background:linear-gradient(180deg,#f8fbff 0%,#eef6ff 100%);
+  display:grid;
+  grid-template-columns:minmax(220px,310px) minmax(280px,1fr);
+  gap:14px 18px;
+  align-items:end;
+}
+#registerview .independent-lookup-security[hidden]{display:none!important;}
+#registerview .independent-lookup-security .verification-code__label{
+  grid-column:1/-1;
+  margin:0;
+  color:#07346d;
+  font-size:14px;
+  font-weight:900;
+}
+#registerview .independent-lookup-security .verification-code__top{
+  display:grid;
+  grid-template-columns:minmax(170px,1fr) 46px;
+  gap:10px;
+  align-items:center;
+}
+#registerview .independent-lookup-security .verification-code__display{
+  min-width:0;
+  height:58px;
+  border-radius:12px;
+  border-color:#bad3ee;
+  background:#fff;
+  box-shadow:inset 0 0 0 1px rgba(10,79,168,.04);
+}
+#registerview .independent-lookup-security .verification-code__char{
+  font-size:28px;
+  color:#07346d;
+  letter-spacing:.04em;
+}
+#registerview .independent-lookup-security .verification-code__refresh{
+  width:46px;
+  height:46px;
+  min-height:46px;
+  padding:0;
+  border-radius:50%;
+  border-color:#b8d0ec;
+  background:#fff;
+  color:#0753b8;
+  font-size:20px;
+  box-shadow:0 6px 14px rgba(10,79,168,.08);
+}
+#registerview .independent-lookup-security .verification-code__refresh span:last-child{display:none;}
+#registerview .independent-lookup-security .verification-code__input{min-width:0;}
+#registerview .independent-lookup-security .verification-code__input label{
+  color:#253141;
+  font-size:13px;
+  font-weight:900;
+}
+#registerview .independent-lookup-security .verification-code__input input{
+  height:58px;
+  border-radius:12px;
+  background:#fff;
+  letter-spacing:.10em;
+}
+@media(max-width:760px){
+  #registerview .independent-lookup-security{
+    grid-template-columns:1fr;
+    padding:14px;
+    gap:12px;
+  }
+  #registerview .independent-lookup-security .verification-code__top{
+    grid-template-columns:1fr 44px;
+  }
+  #registerview .independent-lookup-security .verification-code__display,
+  #registerview .independent-lookup-security .verification-code__input input{
+    height:54px;
+  }
+  #registerview .independent-lookup-security .verification-code__refresh{
+    width:44px;
+    height:44px;
+    min-height:44px;
+  }
+}
 /* Disable legacy choiceflow screen */
 #homeview.choiceflow{display:none!important}
 </style>
@@ -8787,7 +8873,7 @@ html,body{max-width:100%;overflow-x:hidden}
 <div class="field" id="rucfield"><label for="ruc">RUC <span class="req">*</span></label><input id="ruc" maxlength="11" inputmode="numeric" placeholder="Ej. 20100123456"><div class="hint">Debe contener 11 dígitos.</div></div>
 <div class="field"><label for="doctype">Tipo de documento <span class="req">*</span></label><select id="doctype"><option>DNI</option><option>Carné de extranjería</option><option>Pasaporte</option></select><div class="hint"></div></div>
 <div class="field doc-query-field"><label for="doc">N.º de documento <span class="req">*</span></label><div class="doc-query-row"><input id="doc" maxlength="8" inputmode="numeric" placeholder="Ingresa 8 dígitos" required><button class="doc-query-button" id="consultHolderData" type="button" aria-label="Consultar datos del titular" disabled><span aria-hidden="true" class="doc-query-icon">⌕</span><span class="doc-query-text">Consultar datos</span></button></div><div class="hint"></div></div>
-</div><div class="grid3" style="margin-top:17px">
+</div><div class="verification-code independent-lookup-security" id="independentLookupSecurity" data-verification="independent-lookup" hidden><div class="verification-code__label">Código de verificación</div><div class="verification-code__top"><div class="verification-code__display" id="independentLookupCaptcha" role="img" aria-label="Código de verificación generado para búsqueda"></div><button class="verification-code__refresh" id="refreshIndependentLookup" type="button" aria-label="Actualizar código" title="Actualizar código"><span aria-hidden="true">↻</span><span>Actualizar código</span></button></div><div class="field verification-code__input"><label for="independentLookupCaptchaInput">Ingresa el código mostrado <span class="req">*</span></label><input id="independentLookupCaptchaInput" maxlength="5" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Escribe el código" aria-describedby="independentLookupCaptchaErr"><div class="error verification-code__error" id="independentLookupCaptchaErr"></div></div><div class="verification-code__live" id="independentLookupCaptchaLive" aria-live="polite"></div></div><div class="grid3" style="margin-top:17px">
 <div class="field"><label for="ap1">Apellido paterno</label><input id="ap1" required readonly><div class="hint"></div></div>
 <div class="field"><label for="ap2">Apellido materno</label><input id="ap2" readonly><div class="hint"></div></div>
 <div class="field"><label for="names">Nombres</label><input id="names" required readonly><div class="hint"></div></div>
@@ -8799,6 +8885,7 @@ html,body{max-width:100%;overflow-x:hidden}
 <div class="notice">ⓘ <div>Asegúrate de que los datos sean visibles, sin reflejos, sombras ni bordes recortados.</div></div>
 </div></div>
 <div class="section contact-section locked" id="contactsection" aria-describedby="contactlockmessage"><h2 class="sectitle">Datos de contacto</h2><div class="contact-lock-message" id="contactlockmessage">ⓘ <span>Consulta los datos del titular para habilitar esta sección</span></div><div class="contact"><div class="field"><label for="phone">Celular <span class="req">*</span></label><div class="phone"><select id="phonecountry"><option>+51</option></select><input id="phone" maxlength="9" inputmode="numeric" placeholder="Ej. 987654321" required></div><div class="hint">Te enviaremos notificaciones sobre tu registro.</div></div><div class="field"><label for="email">Correo electrónico <span class="req">*</span></label><input id="email" type="email" placeholder="Ej. nombre@correo.com.pe" required autocomplete="email"><div class="hint">Enviaremos tus credenciales a este correo.</div></div><div class="field"><label for="confirmemail">Confirmar correo electrónico <span class="req">*</span></label><input id="confirmemail" type="email" placeholder="Vuelve a ingresar tu correo" required autocomplete="email"><div class="email-match" id="confirmemailhelp">Ambos correos deben coincidir.</div></div></div><div class="notice">🔒 <div><strong>Tus datos están protegidos.</strong> Los utilizaremos para validar tu registro y comunicarnos sobre tu cuenta.</div></div></div>
+<div class="section" id="independentPrivacySection" hidden><h2 class="sectitle">✓ Confirmación y seguridad</h2><div class="terms"><label class="checkrow"><input type="checkbox" id="independentPrivacy"><span>He leído la <a href="#" onclick="return false">Política de privacidad y tratamiento de datos personales de AFPnet</a>.</span></label></div></div>
 <div class="actions"><button type="button" class="btn primary" id="next">Continuar &rarr;</button></div></section>
 <section class="panel" id="step2" hidden>
 <button type="button" class="register-step-back" id="backbtn" aria-label="Volver">&larr; Volver</button>
@@ -8860,18 +8947,18 @@ html,body{max-width:100%;overflow-x:hidden}
 <section class="panel employer-panel" id="empStep2" hidden>
   <button type="button" class="register-step-back" id="empBack1" aria-label="Volver">&larr; Volver</button>
   <div class="section"><h2 class="sectitle">Datos del representante legal</h2><div class="grid2"><div class="field"><label for="empRepDocType">Tipo de documento <span class="req">*</span></label><select id="empRepDocType"><option>DNI</option><option>Carné de extranjería</option><option>Pasaporte</option></select></div><div class="field"><label for="empRepDoc">N.º de documento <span class="req">*</span></label><input id="empRepDoc" maxlength="12" inputmode="numeric" placeholder="Ingresa el documento" required></div></div><div class="grid3" style="margin-top:17px"><div class="field"><label for="empRepAp1">Apellido paterno <span class="req">*</span></label><input id="empRepAp1" required></div><div class="field"><label for="empRepAp2">Apellido materno <span class="req">*</span></label><input id="empRepAp2" required></div><div class="field"><label for="empRepNames">Nombres <span class="req">*</span></label><input id="empRepNames" required></div></div></div>
-  <div class="section"><h2 class="sectitle">Datos de contacto</h2><div class="grid2"><div class="field"><label for="empRepEmail">Correo electrónico <span class="req">*</span></label><input id="empRepEmail" type="email" placeholder="Ej. representante@empresa.com" required></div><div class="field"><label for="empRepPhone">Celular <span class="req">*</span></label><input id="empRepPhone" maxlength="9" inputmode="numeric" placeholder="Ej. 987654321" required></div></div></div>
+  <div class="section"><h2 class="sectitle">Datos de contacto</h2><div class="grid3"><div class="field"><label for="empRepEmail">Correo electrónico <span class="req">*</span></label><input id="empRepEmail" type="email" placeholder="Ej. representante@empresa.com" required></div><div class="field"><label for="empRepConfirmEmail">Confirmar correo electrónico <span class="req">*</span></label><input id="empRepConfirmEmail" type="email" placeholder="Vuelve a ingresar el correo" required><div class="email-match" id="empRepConfirmEmailHelp">Ambos correos deben coincidir.</div></div><div class="field"><label for="empRepPhone">Celular <span class="req">*</span></label><input id="empRepPhone" maxlength="9" inputmode="numeric" placeholder="Ej. 987654321" required></div></div></div>
   <div class="actions"><button type="button" class="btn primary" id="empNext2">Continuar &rarr;</button></div>
 </section>
 <section class="panel employer-panel" id="empStep3" hidden>
   <button type="button" class="register-step-back" id="empBack2" aria-label="Volver">&larr; Volver</button>
   <div class="section"><h2 class="sectitle">Datos del usuario administrador AFPNET</h2><label class="checkrow emp-copy-check"><input type="checkbox" id="empSameAsRep"><span>Usar los mismos datos del representante legal.</span></label><div class="grid2"><div class="field"><label for="empAdminDocType">Tipo de documento <span class="req">*</span></label><select id="empAdminDocType"><option>DNI</option><option>Carné de extranjería</option><option>Pasaporte</option></select></div><div class="field"><label for="empAdminDoc">N.º de documento <span class="req">*</span></label><input id="empAdminDoc" maxlength="12" inputmode="numeric" placeholder="Ingresa el documento" required></div></div><div class="grid3" style="margin-top:17px"><div class="field"><label for="empAdminAp1">Apellido paterno <span class="req">*</span></label><input id="empAdminAp1" required></div><div class="field"><label for="empAdminAp2">Apellido materno <span class="req">*</span></label><input id="empAdminAp2" required></div><div class="field"><label for="empAdminNames">Nombres <span class="req">*</span></label><input id="empAdminNames" required></div></div></div>
-  <div class="section"><h2 class="sectitle">Datos de contacto</h2><div class="grid2"><div class="field"><label for="empAdminEmail">Correo electrónico <span class="req">*</span></label><input id="empAdminEmail" type="email" placeholder="Ej. administrador@empresa.com" required><div class="hint">A este correo se enviarán las credenciales.</div></div><div class="field"><label for="empAdminPhone">Celular <span class="req">*</span></label><input id="empAdminPhone" maxlength="9" inputmode="numeric" placeholder="Ej. 987654321" required></div></div></div>
+  <div class="section"><h2 class="sectitle">Datos de contacto</h2><div class="grid3"><div class="field"><label for="empAdminEmail">Correo electrónico <span class="req">*</span></label><input id="empAdminEmail" type="email" placeholder="Ej. administrador@empresa.com" required><div class="hint">A este correo se enviarán las credenciales.</div></div><div class="field"><label for="empAdminConfirmEmail">Confirmar correo electrónico <span class="req">*</span></label><input id="empAdminConfirmEmail" type="email" placeholder="Vuelve a ingresar el correo" required><div class="email-match" id="empAdminConfirmEmailHelp">Ambos correos deben coincidir.</div></div><div class="field"><label for="empAdminPhone">Celular <span class="req">*</span></label><input id="empAdminPhone" maxlength="9" inputmode="numeric" placeholder="Ej. 987654321" required></div></div></div>
   <div class="actions"><button type="button" class="btn primary" id="empNext3">Continuar &rarr;</button></div>
 </section>
 <section class="panel employer-panel" id="empStep4" hidden>
   <button type="button" class="register-step-back" id="empBack3" aria-label="Volver">&larr; Volver</button>
-  <div class="section"><h2 class="sectitle">Datos de contacto de la empresa</h2><label class="checkrow emp-copy-check"><input type="checkbox" id="empContactSameAsRep"><span>Usar los mismos datos del representante legal.</span></label><div class="grid2"><div class="field"><label for="empContactDocType">Tipo de documento <span class="req">*</span></label><select id="empContactDocType"><option>DNI</option><option>Carné de extranjería</option><option>Pasaporte</option></select></div><div class="field"><label for="empContactDoc">N.º de documento <span class="req">*</span></label><input id="empContactDoc" maxlength="12" inputmode="numeric" placeholder="Ingresa el documento" required></div></div><div class="grid3" style="margin-top:17px"><div class="field"><label for="empContactAp1">Apellido paterno <span class="req">*</span></label><input id="empContactAp1" required></div><div class="field"><label for="empContactAp2">Apellido materno <span class="req">*</span></label><input id="empContactAp2" required></div><div class="field"><label for="empContactNames">Nombres <span class="req">*</span></label><input id="empContactNames" required></div></div><div class="grid2" style="margin-top:17px"><div class="field"><label for="empContactEmail">Correo electrónico <span class="req">*</span></label><input id="empContactEmail" type="email" placeholder="Ej. contacto@empresa.com" required></div><div class="field"><label for="empContactPhone">Celular <span class="req">*</span></label><input id="empContactPhone" maxlength="9" inputmode="numeric" placeholder="Ej. 987654321" required></div></div></div>
+  <div class="section"><h2 class="sectitle">Datos de contacto de la empresa</h2><label class="checkrow emp-copy-check"><input type="checkbox" id="empContactSameAsRep"><span>Usar los mismos datos del representante legal.</span></label><div class="grid2"><div class="field"><label for="empContactDocType">Tipo de documento <span class="req">*</span></label><select id="empContactDocType"><option>DNI</option><option>Carné de extranjería</option><option>Pasaporte</option></select></div><div class="field"><label for="empContactDoc">N.º de documento <span class="req">*</span></label><input id="empContactDoc" maxlength="12" inputmode="numeric" placeholder="Ingresa el documento" required></div></div><div class="grid3" style="margin-top:17px"><div class="field"><label for="empContactAp1">Apellido paterno <span class="req">*</span></label><input id="empContactAp1" required></div><div class="field"><label for="empContactAp2">Apellido materno <span class="req">*</span></label><input id="empContactAp2" required></div><div class="field"><label for="empContactNames">Nombres <span class="req">*</span></label><input id="empContactNames" required></div></div><div class="grid3" style="margin-top:17px"><div class="field"><label for="empContactEmail">Correo electrónico <span class="req">*</span></label><input id="empContactEmail" type="email" placeholder="Ej. contacto@empresa.com" required></div><div class="field"><label for="empContactConfirmEmail">Confirmar correo electrónico <span class="req">*</span></label><input id="empContactConfirmEmail" type="email" placeholder="Vuelve a ingresar el correo" required><div class="email-match" id="empContactConfirmEmailHelp">Ambos correos deben coincidir.</div></div><div class="field"><label for="empContactPhone">Celular <span class="req">*</span></label><input id="empContactPhone" maxlength="9" inputmode="numeric" placeholder="Ej. 987654321" required></div></div></div>
   <div class="actions"><button type="button" class="btn primary" id="empNext4">Continuar &rarr;</button></div>
 </section>
 <section class="panel employer-panel" id="empStep5" hidden>
@@ -9427,8 +9514,13 @@ function setHolderQueryLoading(loading){
   $('consultHolderData').querySelector('.doc-query-text').textContent=loading?'Consultando…':'Consultar datos';
   if(!loading)updateHolderQueryButton();
 }
+function validateIndependentLookupCaptcha({focusOnError=true}={}){
+  if(activeProfile!=='afiliado')return true;
+  return independentLookupVerification ? independentLookupVerification.validate({focusOnError}) : false;
+}
 async function runHolderDataQuery(){
   if(titularConsultaEnProceso||!validateDocNumberField('doctype','doc',true))return;
+  if(!validateIndependentLookupCaptcha({focusOnError:true}))return;
   const tipo=$('doctype').value;
   const numero=$('doc').value.trim().toUpperCase();
   setHolderQueryLoading(true);
@@ -9451,6 +9543,7 @@ async function runHolderDataQuery(){
     updateHolderQueryButton();
   }
 }
+var independentLookupVerification=null;
 function updateRegistrationType(type){
   document.querySelectorAll('.type').forEach(x=>x.classList.toggle('selected',x.querySelector('input').value===type));
   document.querySelector(`.type input[value="${type}"]`).checked=true;
@@ -9461,6 +9554,10 @@ function updateRegistrationType(type){
   $('ruc').required = needsRuc;
 
   $('dniupload').hidden = type === 'natural' || type === 'afiliado';
+  if($('independentLookupSecurity'))$('independentLookupSecurity').hidden = type !== 'afiliado';
+  if($('independentPrivacySection'))$('independentPrivacySection').hidden = type !== 'afiliado';
+  if($('next'))$('next').innerHTML = type === 'afiliado' ? 'Confirmar' : 'Continuar &rarr;';
+  if(type === 'afiliado' && independentLookupVerification) independentLookupVerification.refresh({focus:false,announce:false});
 
   const doctypeSelect = $('doctype');
   const passportOption = Array.from(doctypeSelect.options).find(opt => opt.textContent.trim() === 'Pasaporte');
@@ -9540,6 +9637,11 @@ function valid1(){
   $('confirmemailhelp').className=`email-match ${emailsMatch?'ok':'error'}`;
   ok=ok&&em&&emailsMatch;
 
+  if(selectedType==='afiliado' && !$('independentPrivacy').checked){
+    alert('Debes revisar la política de privacidad de AFPnet.');
+    ok=false;
+  }
+
   if(!$('dniupload').hidden&&(!$('front').files.length||!$('back').files.length)){
     alert('Carga el frente y reverso del DNI.');
     ok=false;
@@ -9608,10 +9710,10 @@ function resetBiometric(){
   if($('biometricStart')){$('biometricStart').hidden=false;$('biometricStart').disabled=false;$('biometricStart').textContent='Iniciar validación facial';$('biometricStart').onclick=startBiometricValidation;}
   biometricSetState('pending','Validación pendiente','Ubica tu rostro dentro del recuadro.');
 }
-function completeRegistration(){
+function completeRegistration(mode='natural'){
   clearBiometricRedirect();
   stopBiometricCamera();
-  setRegistrationSuccessCopy('natural');
+  setRegistrationSuccessCopy(mode);
   $('finalemail').textContent=email.value;
   homeview.hidden=true;
   signinview.hidden=true;
@@ -9622,6 +9724,9 @@ function completeRegistration(){
   headertitle.textContent='BIENVENIDO';
   headersubtitle.textContent='Tu registro fue completado';
   scrollTo({top:0,behavior:'smooth'});
+}
+function completeIndependentRegistration(){
+  completeRegistration('independent');
 }
 function biometricSuccess(){
   stopBiometricCamera();
@@ -9740,6 +9845,11 @@ async function startBiometricValidation(){
 function updateRegisterProgressSummary(step){
   const kicker=$('registerStepKicker'), title=$('registerStepTitle');
   if(!kicker || !title) return;
+  if(activeProfile==='afiliado'){
+    kicker.textContent='Paso 1 de 1';
+    title.textContent='Identificación y contacto';
+    return;
+  }
   const copy={
     1:['Paso 1 de 3','Identificación y contacto'],
     2:['Paso 2 de 3','Domicilio'],
@@ -9760,10 +9870,12 @@ function setRegisterProgress(step){
   updateRegisterProgressSummary(step);
 }
 function showRegisterPanel(step){
+  const independent=activeProfile==='afiliado';
   step1.hidden=step!==1;
-  step2.hidden=step!==2;
-  if(step3)step3.hidden=step!==3;
-  setRegisterProgress(step);
+  step2.hidden=independent || step!==2;
+  if(step3)step3.hidden=independent || step!==3;
+  if(progress)progress.hidden=independent;
+  setRegisterProgress(independent?1:step);
   scrollTo({top:0,behavior:'smooth'});
 }
 function go2(){stopBiometricCamera();showRegisterPanel(2);$('masked').textContent=email.value}
@@ -9777,13 +9889,14 @@ function valid2(focusOnError=true){
   ok=ok&&c;
   return ok;
 }
-$('next').onclick=()=>{if(valid1())go2()};
+$('next').onclick=()=>{if(valid1()){if(activeProfile==='afiliado')completeIndependentRegistration();else go2();}};
 $('backbtn').onclick=go1;
 if($('edit')) $('edit').onclick=go1;
 if($('biometricNext'))$('biometricNext').onclick=()=>{if(valid2())go3()};
 if($('backBiometric'))$('backBiometric').onclick=()=>{stopBiometricCamera();go2()};
 if($('cancel')) $('cancel').onclick=()=>showRegisterProfilePicker(activeProfile||'natural');
 const registerVerification=createVerificationCode({displayId:'captchatext',inputId:'captchainput',refreshId:'refresh',errorId:'captchaerr',liveId:'registerCaptchaLive',onChange:value=>{code=value}});
+independentLookupVerification=createVerificationCode({displayId:'independentLookupCaptcha',inputId:'independentLookupCaptchaInput',refreshId:'refreshIndependentLookup',errorId:'independentLookupCaptchaErr',liveId:'independentLookupCaptchaLive'});
 $('form').onsubmit=e=>{
   e.preventDefault();
   if(!valid2(false)){go2();return;}
@@ -9860,10 +9973,23 @@ function empMark(id,valid){const el=empField(id);if(el)el.classList.toggle('inva
 function empRequired(ids){let ok=true;ids.forEach(id=>{ok=empMark(id,!!empValue(id))&&ok});return ok}
 function empDigits(id,min,max=min){const value=empValue(id), ok=new RegExp('^\\d{'+min+','+max+'}$').test(value);return empMark(id,ok)}
 function empEmail(id){const value=empValue(id), ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);return empMark(id,ok)}
+function empEmailMatch(emailId,confirmId,helpId){
+  const emailEl=empField(emailId), confirmEl=empField(confirmId);
+  const emailValue=empValue(emailId), confirmValue=empValue(confirmId);
+  const emailOk=empEmail(emailId), matchOk=!!confirmValue && emailOk && confirmValue===emailValue;
+  if(confirmEl)confirmEl.classList.toggle('invalid',!matchOk);
+  if(emailEl)emailEl.classList.toggle('invalid',!emailOk || !matchOk);
+  const help=helpId?$(helpId):null;
+  if(help){
+    help.textContent=matchOk?'Los correos coinciden.':'Los correos electrónicos no coinciden.';
+    help.className=`email-match ${matchOk?'ok':'error'}`;
+  }
+  return matchOk;
+}
 function validateEmp1(){let ok=empRequired(['empRazonsocial','empDep','empProv','empDist','empRoadType','empRoad','empNum']);ok=empDigits('empRuc',11)&&ok;ok=empDigits('empTelefono',7,9)&&ok;return ok}
-function validateEmp2(){let ok=empRequired(['empRepDocType','empRepDoc','empRepAp1','empRepAp2','empRepNames']);ok=empDigits('empRepPhone',9)&&ok;ok=empEmail('empRepEmail')&&ok;return ok}
-function validateEmp3(){let ok=empRequired(['empAdminDocType','empAdminDoc','empAdminAp1','empAdminAp2','empAdminNames']);ok=empDigits('empAdminPhone',9)&&ok;ok=empEmail('empAdminEmail')&&ok;return ok}
-function validateEmp4(){let ok=empRequired(['empContactDocType','empContactDoc','empContactAp1','empContactAp2','empContactNames']);ok=empDigits('empContactPhone',9)&&ok;ok=empEmail('empContactEmail')&&ok;return ok}
+function validateEmp2(){let ok=empRequired(['empRepDocType','empRepDoc','empRepAp1','empRepAp2','empRepNames']);ok=empDigits('empRepPhone',9)&&ok;ok=empEmailMatch('empRepEmail','empRepConfirmEmail','empRepConfirmEmailHelp')&&ok;return ok}
+function validateEmp3(){let ok=empRequired(['empAdminDocType','empAdminDoc','empAdminAp1','empAdminAp2','empAdminNames']);ok=empDigits('empAdminPhone',9)&&ok;ok=empEmailMatch('empAdminEmail','empAdminConfirmEmail','empAdminConfirmEmailHelp')&&ok;return ok}
+function validateEmp4(){let ok=empRequired(['empContactDocType','empContactDoc','empContactAp1','empContactAp2','empContactNames']);ok=empDigits('empContactPhone',9)&&ok;ok=empEmailMatch('empContactEmail','empContactConfirmEmail','empContactConfirmEmailHelp')&&ok;return ok}
 function isAllowedEmployerFile(file){return !!file && (file.type==='application/pdf' || file.type==='image/jpeg' || /\.(pdf|jpe?g)$/i.test(file.name)) && file.size<=5*1024*1024}
 function getEmployerDniFile(inputId){
   const input=$(inputId);
@@ -9894,10 +10020,12 @@ function copyEmployerFields(pairs){
   pairs.forEach(([from,to])=>{if($(from)&&$(to))$(to).value=$(from).value});
 }
 function syncAdminWithRepresentative(){
-  copyEmployerFields([['empRepDocType','empAdminDocType'],['empRepDoc','empAdminDoc'],['empRepAp1','empAdminAp1'],['empRepAp2','empAdminAp2'],['empRepNames','empAdminNames'],['empRepEmail','empAdminEmail'],['empRepPhone','empAdminPhone']]);
+  copyEmployerFields([['empRepDocType','empAdminDocType'],['empRepDoc','empAdminDoc'],['empRepAp1','empAdminAp1'],['empRepAp2','empAdminAp2'],['empRepNames','empAdminNames'],['empRepEmail','empAdminEmail'],['empRepConfirmEmail','empAdminConfirmEmail'],['empRepPhone','empAdminPhone']]);
+  empEmailMatch('empAdminEmail','empAdminConfirmEmail','empAdminConfirmEmailHelp');
 }
 function syncContactWithRepresentative(){
-  copyEmployerFields([['empRepDocType','empContactDocType'],['empRepDoc','empContactDoc'],['empRepAp1','empContactAp1'],['empRepAp2','empContactAp2'],['empRepNames','empContactNames'],['empRepEmail','empContactEmail'],['empRepPhone','empContactPhone']]);
+  copyEmployerFields([['empRepDocType','empContactDocType'],['empRepDoc','empContactDoc'],['empRepAp1','empContactAp1'],['empRepAp2','empContactAp2'],['empRepNames','empContactNames'],['empRepEmail','empContactEmail'],['empRepConfirmEmail','empContactConfirmEmail'],['empRepPhone','empContactPhone']]);
+  empEmailMatch('empContactEmail','empContactConfirmEmail','empContactConfirmEmailHelp');
 }
 
 function setEmployerDniCameraError(message){
@@ -9989,7 +10117,7 @@ function setRegistrationSuccessCopy(mode){
   }else{
     if(eyebrow)eyebrow.textContent='Registro exitoso';
     if(h)h.textContent='¡Bienvenido a AFPnet!';
-    if(lead)lead.textContent='Tu registro se completó correctamente. Ya estamos preparando tu acceso para que puedas ingresar a la plataforma.';
+    if(lead)lead.textContent=mode==='independent'?'Tu registro como trabajador independiente se completó correctamente. Ya puedes ingresar a AFPnet con las credenciales que enviaremos a tu correo.':'Tu registro se completó correctamente. Ya estamos preparando tu acceso para que puedas ingresar a la plataforma.';
     if(mail)mail.childNodes[0].nodeValue='Enviamos tus credenciales e instrucciones de acceso a: ';
     if(steps)steps.innerHTML='<div class="successstep"><span class="num">1</span><span>Revisa tu bandeja de entrada y la carpeta de correo no deseado.</span></div><div class="successstep"><span class="num">2</span><span>Ingresa con las credenciales recibidas.</span></div><div class="successstep"><span class="num">3</span><span>Cambia la contraseña temporal en tu primer ingreso.</span></div>';
   }
@@ -10018,7 +10146,7 @@ if($('empNext4'))$('empNext4').onclick=()=>{if(validateEmp4())showEmployerStep(5
 if($('empFinishRegister'))$('empFinishRegister').onclick=completeEmployerRegistration;
 if($('empSameAsRep'))$('empSameAsRep').onchange=e=>{if(e.target.checked)syncAdminWithRepresentative()};
 if($('empContactSameAsRep'))$('empContactSameAsRep').onchange=e=>{if(e.target.checked)syncContactWithRepresentative()};
-['empRepDocType','empRepDoc','empRepAp1','empRepAp2','empRepNames','empRepEmail','empRepPhone'].forEach(id=>{
+['empRepDocType','empRepDoc','empRepAp1','empRepAp2','empRepNames','empRepEmail','empRepConfirmEmail','empRepPhone'].forEach(id=>{
   if($(id))['input','change'].forEach(eventName=>$(id).addEventListener(eventName,()=>{
     if($('empSameAsRep')&&$('empSameAsRep').checked)syncAdminWithRepresentative();
     if($('empContactSameAsRep')&&$('empContactSameAsRep').checked)syncContactWithRepresentative();
